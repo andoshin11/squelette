@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "es5",
+    "removeComments": true,
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "stripInternal": true,
+    "strict": true
+  }
+}
