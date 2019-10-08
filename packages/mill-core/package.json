@@ -1,0 +1,13 @@
+{
+  "name": "@mill/core",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^3.6.3"
+  }
+}
