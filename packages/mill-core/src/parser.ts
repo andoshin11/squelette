@@ -6,7 +6,7 @@ import { ErrorStatusCode } from './const'
 
 const methods: HTTPMethod[] = ['get', 'put', 'post', 'delete', 'options', 'head', 'patch']
 
-export default function parse (spec: OpenAPIObject): ITag {
+export function parse (spec: OpenAPIObject): ITag {
   return Object.keys(spec.paths).reduce((result: ITag, path) => {
     const pathItem: PathItemObject = spec.paths[path]
 
