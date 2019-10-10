@@ -7,6 +7,21 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "swagger",
+    "codegen",
+    "typescript",
+    "openapi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andoshin11/squelette.git"
+  },
+  "author": "andoshin11 <shinglish11@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/andoshin11/squelette/issues"
+  },
+  "homepage": "https://github.com/andoshin11/squelette#readme",
   "scripts": {
     "build": "tsc",
     "prepare": "tsc"
