@@ -1,6 +1,6 @@
 {
   "name": "@mill/ts-gen",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mill/core": "^0.0.0",
+    "@mill/core": "^0.0.1",
     "commander": "^3.0.2",
     "ejs": "^2.7.1",
     "js-yaml": "^3.13.1",
