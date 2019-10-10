@@ -8,6 +8,7 @@
     "build": "tsc"
   },
   "devDependencies": {
+    "openapi3-ts": "^1.3.0",
     "typescript": "^3.6.3"
   }
 }
