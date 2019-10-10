@@ -1,6 +1,17 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "updateSnapshot": "lerna run updateSnapshot",
+    "versionup": "lerna version --conventional-commits",
+    "versionup:patch": "lerna version patch --conventional-commits",
+    "versionup:minor": "lerna version minor --conventional-commits",
+    "versionup:major": "lerna version minor --conventional-commits",
+    "release": "lerna publish from-package"
+  },
   "devDependencies": {
     "lerna": "^3.16.5",
     "typescript": "^3.6.3"
