@@ -1,0 +1,8 @@
+<%_ if (schema.isRef && schema.type !== name) { _%>
+  import <%= schema.type %> from "./<%= schema.type %>";
+  <%_ };
+    if (!helper.isEmpty(schema.properties)) {
+      Object.entries(schema.properties).forEach(([_name, _schema]) => { _%>
+  <%-     include('/ref', { name: _name, schema: _schema }) _%>
+  <%_   })
+    }; _%>
