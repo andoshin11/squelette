@@ -11,6 +11,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@mill/core": "^0.0.0"
+    "@mill/core": "^0.0.0",
+    "ejs": "^2.7.1"
   }
 }
