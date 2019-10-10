@@ -1,5 +1,5 @@
 import { SchemaObject } from 'openapi3-ts'
-import { SwaggerSchemaType, SwaggerSchemaFormat, BaseSchema, Schema } from './types'
+import { SwaggerSchemaType, SwaggerSchemaFormat, BaseSchema, Schema, TSSchema } from './types'
 
 // Map swagger types to typescript definitions
 // [swagger-type:typescript-type]
@@ -78,4 +78,19 @@ export function getRefName(ref: string): string {
  */
 export function isRequired(schema: SchemaObject, key: string): boolean {
   return (schema.required || []).includes(key)
+}
+
+/**
+ * Create default schema
+ */
+export function emptySchema(): TSSchema {
+  return {
+    type: 'void',
+    isRequired: false,
+    isRef: false,
+    isArray: false,
+    isNullable: false,
+    properties: {},
+    enum: []
+  }
 }

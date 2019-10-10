@@ -1,3 +1,5 @@
+import { ErrorStatusCode } from './const'
+
 export interface TSSchema {
   type: string
   isRequired: boolean
@@ -42,6 +44,29 @@ export type SwaggerSchemaType =
   | 'File'
   | 'Error'
 
+export type HTTPMethod = 'get' | 'put' | 'post' | 'delete' | 'options' | 'head'| 'patch'
+
+export interface IOperation {
+  name: string
+  path: string
+  method: HTTPMethod
+  pathParameter?: TSSchema
+  queryParameter?: TSSchema
+  requestBody?: TSSchema
+  response?: TSSchema
+  errors?: IErrorsSchema
+}
+  
+
+export type ErrorStatusCodeType = TupleToUnion<typeof ErrorStatusCode>
+
+export type IErrorsSchema = {
+  [key in ErrorStatusCodeType]?: TSSchema
+}
+  
+export interface ITag {
+  [tag: string]: IOperation[]
+}
 
 // ------------------------------ Schema -------------------------------------
 export interface BaseSchema {
@@ -107,3 +132,6 @@ export interface ExternalDocs {
   url: string
   description?: string
 }
+
+// ------------------------------ Utility Types -------------------------------------
+type TupleToUnion<T> = T extends { [K in keyof T]: infer U } ? U : never
