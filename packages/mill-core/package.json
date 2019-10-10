@@ -14,5 +14,6 @@
   "devDependencies": {
     "openapi3-ts": "^1.3.0",
     "typescript": "^3.6.3"
-  }
+  },
+  "gitHead": "6618c077f9dd14b2366e297e96ebfbdb9bc61b66"
 }
