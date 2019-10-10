@@ -5,7 +5,8 @@
   "types": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "tsc"
   },
   "bin": {
     "ts-gen": "./bin/ts-gen.js"
