@@ -3,7 +3,7 @@ import * as path from 'path'
 import * as ejs from 'ejs'
 import * as prettier from 'prettier'
 import { OpenAPIObject } from 'openapi3-ts'
-import { mapTS, parse } from '@mill/core'
+import { mapTS, parse } from '@squelette/core'
 import { IDefinition, GenFileRequest } from './types'
 import * as helper from './helper'
 

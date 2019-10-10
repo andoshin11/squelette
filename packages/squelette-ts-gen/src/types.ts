@@ -1,4 +1,4 @@
-import { TSSchema } from '@mill/core'
+import { TSSchema } from '@squelette/core'
 
 export interface IDefinition {
   name: string

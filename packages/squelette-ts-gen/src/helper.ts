@@ -1,4 +1,4 @@
-import { TSSchema } from '@mill/core'
+import { TSSchema } from '@squelette/core'
 
 export const isEmpty = (obj: object = {}): boolean => Object.keys(obj).length === 0
 
