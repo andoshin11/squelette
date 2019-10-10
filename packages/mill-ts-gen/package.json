@@ -7,6 +7,9 @@
   "scripts": {
     "build": "tsc"
   },
+  "bin": {
+    "ts-gen": "./bin/ts-gen.js"
+  },
   "devDependencies": {
     "@types/ejs": "^2.6.3",
     "@types/js-yaml": "^3.12.1",
