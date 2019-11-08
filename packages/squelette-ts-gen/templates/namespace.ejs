@@ -38,6 +38,19 @@ export namespace <%= namespace %> {
     }
     <% }; %>
 
+
+    <%_ if (operation.pathParameter && operation.pathParameter.isRef) { _%>
+    export type <%= operation.name %>PathParameter = <%= operation.pathParameter.type %>
+    <%_ } else { _%>
+    export interface <%= operation.name %>PathParameter {
+      <%_ if (operation.pathParameter && !helper.isEmpty(operation.pathParameter.properties)) { _%>
+        <%_ Object.entries(operation.pathParameter.properties).forEach(([ _name, _schema ]) => { _%>
+      <%- include('./property', { name: _name, schema: _schema, helper }) _%>
+        <%_ });
+          }; _%>
+    }
+    <% }; %>
+
     <%_ if (operation.errors) { _%>
       <%_ Object.entries(operation.errors).forEach(([statusCode, schema]) => { _%>
     export interface <%= operation.name %><%= parseInt(statusCode, 10) %>Error {
@@ -53,5 +66,6 @@ export namespace <%= namespace %> {
 
     <%_ }); _%>
   }
+
   <%_ }); _%>
 }
