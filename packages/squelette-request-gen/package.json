@@ -28,7 +28,7 @@
     "prepare": "tsc"
   },
   "bin": {
-    "ts-gen": "./bin/ts-gen.js"
+    "request-gen": "./bin/request-gen.js"
   },
   "dependencies": {
     "@squelette/core": "^0.1.0",
