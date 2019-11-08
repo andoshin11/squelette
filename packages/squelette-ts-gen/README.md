@@ -1,6 +1,16 @@
 #  @squelette/ts-gen [![npm version](https://badge.fury.io/js/%40squelette%2Fts-gen.svg)](https://badge.fury.io/js/%40squelette%2Fts-gen)
 A type definition generator from Open API 3.0 spec.
 
+# About package
+This packages generates TypeScript interface from.
+
+- Schema components
+- Error object (for each status codes)
+- Request bodies
+- Query Parameters
+- Response objects
+- Path Parameters
+
 # Install
 
 ```sh
@@ -25,6 +35,11 @@ Options:
 
 Commands:
   generate [options] <file>
+
+  Options:
+  -n, --namespace <namespace>  Root namepace
+  -d, --dist <dist>            Output directory
+  -h, --help                   output usage information
 ```
 
 # License
