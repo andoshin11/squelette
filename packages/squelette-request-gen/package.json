@@ -33,11 +33,13 @@
     "@squelette/core": "^0.0.4",
     "commander": "^4.0.0",
     "ejs": "^2.7.1",
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.13.1",
+    "prettier": "^1.18.2"
   },
   "devDependencies": {
     "@types/ejs": "^2.6.3",
     "@types/js-yaml": "^3.12.1",
+    "@types/prettier": "^1.18.3",
     "typescript": "^3.6.4"
   }
 }
