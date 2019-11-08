@@ -30,10 +30,13 @@
     "ts-gen": "./bin/ts-gen.js"
   },
   "dependencies": {
-    "ejs": "^2.7.1"
+    "commander": "^4.0.0",
+    "ejs": "^2.7.1",
+    "js-yaml": "^3.13.1"
   },
   "devDependencies": {
     "@types/ejs": "^2.6.3",
+    "@types/js-yaml": "^3.12.1",
     "typescript": "^3.6.4"
   }
 }
