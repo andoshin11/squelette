@@ -1,6 +1,6 @@
 {
   "name": "@squelette/ts-gen",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@squelette/core": "^0.1.0",
+    "@squelette/core": "^0.2.0",
     "commander": "^3.0.2",
     "ejs": "^2.7.1",
     "js-yaml": "^3.13.1",

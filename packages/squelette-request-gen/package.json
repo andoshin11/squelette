@@ -1,6 +1,6 @@
 {
   "name": "@squelette/request-gen",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
@@ -31,8 +31,8 @@
     "request-gen": "./bin/request-gen.js"
   },
   "dependencies": {
-    "@squelette/core": "^0.1.0",
-    "@squelette/ts-gen": "^0.1.5",
+    "@squelette/core": "^0.2.0",
+    "@squelette/ts-gen": "^0.2.0",
     "commander": "^4.0.0",
     "ejs": "^2.7.1",
     "js-yaml": "^3.13.1",
