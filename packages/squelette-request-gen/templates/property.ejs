@@ -1,0 +1,9 @@
+<%_ if (schema && !helper.isEmpty(schema.properties)) { _%>
+  "<%= name %>"<%= helper.optionalSymbol(schema) _%>: {
+  <%_     Object.entries(schema.properties).forEach(([_name, _schema]) => { _%>
+      <%- include('./property', { name: _name, schema: _schema, helper }) _%>
+  <%_ }) _%>
+    }<%= helper.arraySymbol(schema) _%><%= schema.isNullable ? ' | null' : '' _%>;
+  <%_ } else { _%>
+  "<%= name %>"<%= helper.optionalSymbol(schema) _%>: <% if ((schema.type === 'string' || schema.type === 'number') && schema.enum.length) { const enumStr = schema.enum.map(val => schema.type === 'string' ? `"${val}"` : val).join(' | ') _%><%- enumStr _%><%_ } else { _%><%= schema.type %><%= helper.arraySymbol(schema) _%><%_ } _%><%= schema.isNullable ? ' | null' : '' _%>;
+  <%_ }; _%>
