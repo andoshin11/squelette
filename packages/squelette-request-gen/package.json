@@ -24,6 +24,7 @@
   "homepage": "https://github.com/andoshin11/squelette#readme",
   "scripts": {
     "build": "tsc",
+    "watch": "tsc -w",
     "prepare": "tsc"
   },
   "bin": {
