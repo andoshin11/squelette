@@ -72,7 +72,7 @@ export default class Generator {
         content: ejs.render(this.readFileSync(namespaceTemplate), { ...data, definitionDir: this.definitionDir, helper }, this.createEjsOptions({ filename: namespaceTemplate })) as string
       },
       {
-        filepath: path.resolve(this.dist, 'index.d.ts'),
+        filepath: path.resolve(this.dist, 'index.ts'),
         content: ejs.render(this.readFileSync(rootTemplate), { definitionDir: this.definitionDir }, this.createEjsOptions({ filename: rootTemplate })) as string
       }
     ])
