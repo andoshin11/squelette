@@ -42,5 +42,8 @@ Commands:
   -h, --help                   output usage information
 ```
 
+# Example
+See [example](https://github.com/andoshin11/squelette/tree/master/packages/squelette-ts-gen/example/README.md).
+
 # License
 MIT
