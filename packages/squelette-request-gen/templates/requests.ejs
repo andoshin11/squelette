@@ -11,11 +11,11 @@ export class <%= operation.name %> implements APIRequest<<%= namespace %>.<%= ta
   response: <%= namespace %>.<%= tag %>.<%= operation.name%>Response;
   method = HTTPMethod["<%= operation.method %>"];
   path: string;
-  params: <%= namespace %>.<%= tag %>.<%= operation.name%>Request
+  params<%= helper.isVoid(operation.queryParameter) && helper.isVoid(operation.requestBody) ? "?" : "" %>: <%= namespace %>.<%= tag %>.<%= operation.name%>Request
 
   constructor(args: {
-    params: <%= namespace %>.<%= tag %>.<%= operation.name%>Request;
-    pathParameter: <%= namespace %>.<%= tag %>.<%= operation.name%>PathParameter;
+    params<%= helper.isVoid(operation.queryParameter) && helper.isVoid(operation.requestBody) ? "?" : "" %>: <%= namespace %>.<%= tag %>.<%= operation.name%>Request;
+    pathParameter<%= helper.isVoid(operation.pathParameter) ? "?" : "" %>: <%= namespace %>.<%= tag %>.<%= operation.name%>PathParameter;
   }) {
     const { params, pathParameter } = args
     this.params = params
