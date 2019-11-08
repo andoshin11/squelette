@@ -21,7 +21,7 @@ $ request-gen generate swagger.yml --namespace PetStore --dist requests
 # CLI Options
 
 ```
-Usage: ts-gen [options] [command]
+Usage: request-gen [options] [command]
 
 Generate type definitions from swagger specs
 
@@ -69,29 +69,7 @@ paths:
 components:
   schemas:
     Pet:
-      required:
-        - id
-        - name
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        category:
-          type: integer
-          format: int32
-          enum:
-            - 1
-            - 2
-            - 3
-        tag:
-          type: string
-        sex:
-          type: string
-          enum:
-            - male
-            - female
+      ...
 ```
 
 This schema will be converted to...
@@ -117,7 +95,7 @@ export class showPetById
 }
 ```
 
-The generated schema cane be used with your API client like this.
+The generated schema can be used with your API client like this.
 
 ```js
 # Your API Client
