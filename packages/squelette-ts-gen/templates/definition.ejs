@@ -21,12 +21,24 @@ export interface <%= name _%>List {
 <%_ }) _%>
 }
 <%_   };
-    } else if (schema.enum.length) { _%>
-enum <%= name _%> {
-<%_ schema.enum.forEach((val, index) => { _%>
-  <%= val _%> = "<%= val _%>"<%_ if (index !== 0) {%>,<%_ } _%>
-<%_ })%>
+    } else if (schema.enum.length) {
+      // An enum member cannot have a numeric name
+      // constain numeric
+      if (schema.enum.filter((e) => Number.isFinite(Number(e))).length) { _%>
+type <%= name %> = <% schema.enum.forEach((val, index, array) => { _%>
+<%_ if (typeof val !== 'string') { _%>
+<%= val _%><%_ } else { _%>"<%= val _%>"
+<%_ } %><%= (index !== array.length - 1)? '|' : ';'  _%>
+<%_ }) _%>
+      <%_ } else {
+        // only string
+_%> enum <%= name _%> {
+<%_ schema.enum.forEach((val) => { _%>
+  <%= val %> = "<%= val _%>",
+<%_ })-%>
 }
+      <%_ } _%>
+
 export default <%= name _%>
 <%_ } else { _%>
 export default interface <%= name %> {
