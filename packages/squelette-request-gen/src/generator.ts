@@ -20,7 +20,7 @@ export default class Generator {
 
   private createEjsOptions(params: { filename: string }): ejs.Options {
     const defaultOptions = {
-      root: path.resolve(__dirname, '../templates'),
+      root: path.resolve(__dirname, '../../templates'),
     }
     return {
       ...defaultOptions,
@@ -39,9 +39,9 @@ export default class Generator {
     const data = this.parseSpec()
 
     // Setup templates
-    const typesTemplate = path.resolve(__dirname, '../templates/types.ejs')
-    const requestsTemplate = path.resolve(__dirname, '../templates/requests.ejs')
-    const indexTemplate = path.resolve(__dirname, '../templates/index.ejs')
+    const typesTemplate = path.resolve(__dirname, '../../templates/types.ejs')
+    const requestsTemplate = path.resolve(__dirname, '../../templates/requests.ejs')
+    const indexTemplate = path.resolve(__dirname, '../../templates/index.ejs')
 
     // Setup dist
     if (!fs.existsSync(this.dist)) {

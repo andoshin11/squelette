@@ -4,7 +4,7 @@ import * as YAML from 'js-yaml'
 import * as commander from 'commander'
 import Generator from '../generator'
 
-const pkg = require('../../package.json')
+const pkg = require('../../../package.json')
 
 commander
   .version(pkg.version)
