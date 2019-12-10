@@ -1,8 +1,8 @@
 {
   "name": "@squelette/request-gen",
   "version": "0.2.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/src/index.js",
+  "types": "lib/src/index.d.ts",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
