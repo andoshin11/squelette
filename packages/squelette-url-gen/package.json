@@ -19,11 +19,16 @@
     "url": "https://github.com/andoshin11/squelette/issues"
   },
   "devDependencies": {
+    "@types/ejs": "^3.0.0",
     "@types/js-yaml": "^3.12.1",
+    "@types/prettier": "^1.19.0",
+    "ejs": "^3.0.1",
     "typescript": "3.6.4"
   },
   "dependencies": {
     "commander": "^4.0.1",
-    "js-yaml": "^3.13.1"
+    "ejs": "^3.0.1",
+    "js-yaml": "^3.13.1",
+    "prettier": "^1.19.1"
   }
 }
