@@ -5,7 +5,11 @@
   "author": "andoshin11 <shinglish11@gmail.com>",
   "homepage": "https://github.com/andoshin11/squelette#readme",
   "license": "MIT",
-  "main": "lib/squelette-url-gen.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": {
+    "url-gen": "./bin/url-gen.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/andoshin11/squelette.git"
@@ -32,5 +36,6 @@
     "ejs": "^3.0.1",
     "js-yaml": "^3.13.1",
     "prettier": "^1.19.1"
-  }
+  },
+  "gitHead": "c1db1a3d83f9b2005a87e880fc058e455ced383f"
 }
