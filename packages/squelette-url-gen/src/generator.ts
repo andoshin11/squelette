@@ -39,7 +39,6 @@ export default class Generator {
     // Setup templates
     const indexTemplate = path.resolve(__dirname, '../templates/index.ejs')
     const pathsTemplate = path.resolve(__dirname, '../templates/paths.ejs')
-    const typesTemplate = path.resolve(__dirname, '../templates/types.ejs')
 
     // Setup dist
     if (!fs.existsSync(this.dist)) {
@@ -53,10 +52,6 @@ export default class Generator {
       {
         filepath: path.resolve(this.dist, 'paths.ts'),
         content: ejs.render(this.readFileSync(pathsTemplate), { helper, tags: data.tags }, this.createEjsOptions({ filename: pathsTemplate })) as string
-      },
-      {
-        filepath: path.resolve(this.dist, 'types.ts'),
-        content: ejs.render(this.readFileSync(typesTemplate), {}, this.createEjsOptions({ filename: typesTemplate })) as string
       },
       {
         filepath: path.resolve(this.dist, 'index.ts'),
