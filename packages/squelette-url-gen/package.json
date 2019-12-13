@@ -1,5 +1,5 @@
 {
-  "name": "url-gen",
+  "name": "@squelette/url-gen",
   "version": "0.2.3",
   "description": "> TODO: description",
   "author": "andoshin11 <shinglish11@gmail.com>",
@@ -27,6 +27,7 @@
     "typescript": "3.6.4"
   },
   "dependencies": {
+    "@squelette/core": "^0.2.0",
     "commander": "^4.0.1",
     "ejs": "^3.0.1",
     "js-yaml": "^3.13.1",

@@ -1,0 +1,15 @@
+export const HTTPMethod = {
+  get: 'GET',
+  post: 'POST',
+  delete: 'DELETE',
+  put: 'PUT'
+} as const
+
+type TupleToUnion<T> = T extends { [K in keyof T]: infer U } ? U : never
+
+export interface PathObject {
+  operationId: string
+  raw: string
+  factory: (pathHint?: Record<string, string>) => string
+  method: TupleToUnion<typeof HTTPMethod>
+}
