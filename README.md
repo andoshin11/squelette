@@ -1,7 +1,7 @@
 # Squelette
 Squelette is a command line interface to enhance the usage of [Open API](https://www.openapis.org/) schema.
 
-![Squelette](./assets/squelette-bg-white.png)
+![Squelette](./assets/squelette-bg-white.jpg)
 
 (Logo is designed by [@_pilecks](https://twitter.com/_pilecks) :sparkles:)
 
