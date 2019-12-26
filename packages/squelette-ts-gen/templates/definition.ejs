@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 <%_ if (!helper.isEmpty(schema.properties)) {
-      Object.entries(schema.properties).forEach(([_name, _schema]) => { _%>
+      Object.entries(schema.properties).filter(([_, _schema]) => _schema.isRef && _schema.type !== name).forEach(([_name, _schema]) => { _%>
 <%- include('./ref', { name: _name, schema: _schema }) _%>
 <%_   })
     };
