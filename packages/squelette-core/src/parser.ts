@@ -114,7 +114,7 @@ function parseQueryParameter(parameters: ParameterObject[] = []): TSSchema {
     }, emptySchema())
 }
 
-function parseRequestBody(requestBody?: RequestBodyObject): TSSchema {
+export function parseRequestBody(requestBody?: RequestBodyObject): TSSchema {
   if (!requestBody || !requestBody.content) return emptySchema()
   const targetContent = Object.values(requestBody.content)[0]
   if (!targetContent) return emptySchema()
