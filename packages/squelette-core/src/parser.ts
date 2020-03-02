@@ -51,13 +51,13 @@ export function parse (spec: OpenAPIObject): ITag {
  * Parse response schema
  * @param responses
  */
-function parseResponse(responses: ResponsesObject): TSSchema {
+export function parseResponse(responses: ResponsesObject): TSSchema {
   // Parse response
   if (responses) {
     const response: ResponseObject = responses['200'] || responses['201']
     // console.log(JSON.stringify(responses['200'].content, null, '\t'))
     if (response.content) {
-      return mapTS(response.content['application/json'].schema as SchemaObject)
+      return mapTS(response.content['application/json'].schema as SchemaObject, true)
     }
   }
   return emptySchema()
@@ -67,7 +67,7 @@ function parseResponse(responses: ResponsesObject): TSSchema {
  * Parse response schema
  * @param responses
  */
-function parseErrors(responses: ResponsesObject): IErrorsSchema | undefined {
+export function parseErrors(responses: ResponsesObject): IErrorsSchema | undefined {
   const errors = Object.keys(responses).filter(status => ErrorStatusCode.includes(status as ErrorStatusCodeType))
 
   if (!errors.length) return undefined
@@ -82,7 +82,7 @@ function parseErrors(responses: ResponsesObject): IErrorsSchema | undefined {
     const { schema } = json
     if (!schema) return acc
 
-    acc[ac as ErrorStatusCodeType] = mapTS(schema)
+    acc[ac as ErrorStatusCodeType] = mapTS(schema, true)
     return acc
   }, {} as IErrorsSchema)
 

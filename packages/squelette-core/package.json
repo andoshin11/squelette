@@ -24,11 +24,21 @@
   "homepage": "https://github.com/andoshin11/squelette#readme",
   "scripts": {
     "build": "tsc",
-    "prepare": "tsc"
+    "watch": "tsc -w",
+    "prepare": "tsc",
+    "test:unit": "jest"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.3",
+    "@types/js-yaml": "^3.12.2",
+    "@types/node": "^13.7.7",
+    "@types/prettier": "^1.19.0",
+    "jest": "^25.1.0",
+    "js-yaml": "^3.13.1",
     "openapi3-ts": "^1.3.0",
-    "typescript": "^3.6.3"
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
   },
   "gitHead": "6618c077f9dd14b2366e297e96ebfbdb9bc61b66"
 }
