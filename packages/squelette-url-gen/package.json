@@ -1,6 +1,6 @@
 {
   "name": "@squelette/url-gen",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "description": "> TODO: description",
   "author": "andoshin11 <shinglish11@gmail.com>",
   "homepage": "https://github.com/andoshin11/squelette#readme",
@@ -34,7 +34,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@squelette/core": "^0.2.9",
+    "@squelette/core": "^0.2.10",
     "commander": "^4.0.1",
     "ejs": "^3.0.1",
     "js-yaml": "^3.13.1",
