@@ -6,33 +6,31 @@ import Pets from "./models/Pets";
 import Error from "./models/Error";
 
 export namespace PetStore {
-  export namespace pets {
-    export interface listPetsRequest {
-      limit?: number;
-    }
+  export interface listPetsRequest {
+    limit?: number;
+  }
 
-    export type listPetsResponse = Pets;
+  export type listPetsResponse = Pets;
 
-    export interface listPetsPathParameter {}
+  export interface listPetsPathParameter {}
 
-    export interface createPetsRequest {}
+  export interface createPetsRequest {}
 
-    export interface createPetsResponse {
-      pet: Pet;
-    }
+  export interface createPetsResponse {
+    pet: Pet;
+  }
 
-    export interface createPetsPathParameter {}
+  export interface createPetsPathParameter {}
 
-    export interface createPets422Error {
-      reason: string;
-    }
+  export interface createPets422Error {
+    reason: string;
+  }
 
-    export interface showPetByIdRequest {}
+  export interface showPetByIdRequest {}
 
-    export type showPetByIdResponse = Pets;
+  export type showPetByIdResponse = Pets;
 
-    export interface showPetByIdPathParameter {
-      petId: string;
-    }
+  export interface showPetByIdPathParameter {
+    petId: string;
   }
 }
