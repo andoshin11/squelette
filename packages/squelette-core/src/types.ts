@@ -47,6 +47,7 @@ export type SwaggerSchemaType =
 export type HTTPMethod = 'get' | 'put' | 'post' | 'delete' | 'options' | 'head'| 'patch'
 
 export interface IOperation {
+  tags: string[]
   name: string
   path: string
   method: HTTPMethod

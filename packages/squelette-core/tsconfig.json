@@ -4,5 +4,6 @@
     "outDir": "lib",
     "types": ["jest", "node"]
   },
-  "exclude": ["src/**.test.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**.test.ts", "src/testing"]
 }

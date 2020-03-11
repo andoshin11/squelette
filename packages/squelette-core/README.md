@@ -1,6 +1,17 @@
 # @squelette/core [![npm version](https://badge.fury.io/js/%40squelette%2Fcore.svg)](https://badge.fury.io/js/%40squelette%2Fcore)
 Provides Open API parser and basic types.
 
+# Breaking Changes :warning:
+Since v1.0.0, `parse` method behaves differently from the previous versions.
+
+```ts
+type parsedContent = ReturnType<typeof parse>
+
+// parsedContent === { [tag: string]: IOperation[] } <- before v1.0.0
+// parsedContent === IOperation[]                    <- after v1.0.0
+```
+
+
 # Limitations
 - Currently, this package only accepts Open API 3.0 written in yaml.
 

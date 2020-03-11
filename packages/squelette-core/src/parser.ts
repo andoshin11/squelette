@@ -1,19 +1,20 @@
-import { OpenAPIObject, PathItemObject, OperationObject, ResponsesObject, ResponseObject, ParameterObject, RequestBodyObject, SchemaObject } from 'openapi3-ts'
-import { ITag, HTTPMethod, IOperation, TSSchema, IErrorsSchema, ErrorStatusCodeType } from './types'
+import { OpenAPIObject, PathItemObject, ResponsesObject, ResponseObject, ParameterObject, RequestBodyObject, SchemaObject } from 'openapi3-ts'
+import { HTTPMethod, IOperation, TSSchema, IErrorsSchema, ErrorStatusCodeType } from './types'
 import { emptySchema } from './utils'
 import { mapTS } from './mapTS'
 import { ErrorStatusCode } from './const'
 
 const methods: HTTPMethod[] = ['get', 'put', 'post', 'delete', 'options', 'head', 'patch']
 
-export function parse (spec: OpenAPIObject): ITag {
-  return Object.keys(spec.paths).reduce((result: ITag, path) => {
-    const pathItem: PathItemObject = spec.paths[path]
+export function parse (spec: OpenAPIObject): IOperation[] {
+  const operations = [] as IOperation[]
 
-    Object.keys(pathItem).forEach(method => {
-      if (!methods.includes(method as HTTPMethod)) return
-      
-      const operation: OperationObject = pathItem[method]
+  Object.entries(spec.paths).forEach(([key, val]) => {
+    const path = key
+    const pathItem = val as PathItemObject
+
+    methods.filter(m => !!pathItem[m]).forEach(method => {
+      const operation = pathItem[method]!
       if (operation.deprecated) {
         console.warn('Skip depricated operation', operation.operationId)
         return
@@ -22,15 +23,12 @@ export function parse (spec: OpenAPIObject): ITag {
         console.warn('Skip non-identified operation', path + ' : ' + method)
         return
       }
-      if (!operation.tags) {
-        console.warn('Skip untagged operation', operation.operationId)
-        return
-      }
 
       const operationSchema: IOperation = {
+        tags: operation.tags || [],
         name: operation.operationId,
         path,
-        method: method as HTTPMethod,
+        method,
         response: parseResponse(operation.responses),
         pathParameter: parsePathParameter(operation.parameters as ParameterObject[]),
         queryParameter: parseQueryParameter(operation.parameters as ParameterObject[]),
@@ -38,13 +36,11 @@ export function parse (spec: OpenAPIObject): ITag {
         errors: parseErrors(operation.responses)
       }
 
-      operation.tags.forEach(tag => {
-        result[tag] = result[tag] ? [...result[tag], operationSchema] : [operationSchema]
-      })
+      operations.push(operationSchema)
     })
-    return result
-  }, {})
+  })
 
+  return operations
 }
 
 /**
