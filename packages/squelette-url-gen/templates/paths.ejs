@@ -8,8 +8,6 @@ const HTTPMethod = {
   delete: 'DELETE',
   put: 'PUT'
 }
-<%_ Object.entries(tags).forEach(([tag, operations]) => { _%>
-
 <%_ operations.forEach(operation => { _%>
 export const <%= operation.name %> = {
   operationId: '<%= operation.name %>',
@@ -24,7 +22,5 @@ export const <%= operation.name %> = {
     return `<%= helper.toTemplateLiteral(operation.path) %>`
   }
 }
-
-<%_ }); _%>
 
 <%_ }); _%>

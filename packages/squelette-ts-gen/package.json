@@ -1,8 +1,8 @@
 {
   "name": "@squelette/ts-gen",
   "version": "0.2.10",
-  "main": "lib/src/index.js",
-  "types": "lib/src/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
