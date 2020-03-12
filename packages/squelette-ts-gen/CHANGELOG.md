@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/andoshin11/squelette/compare/v0.2.10...v1.1.0) (2020-03-12)
+
+**Note:** Version bump only for package @squelette/ts-gen
+
+
+
+
+
 # [1.0.0](https://github.com/andoshin11/squelette/compare/v0.2.10...v1.0.0) (2020-03-12)
 
 **Note:** Version bump only for package @squelette/ts-gen
