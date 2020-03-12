@@ -20,7 +20,7 @@ export default class Generator {
 
   private createEjsOptions(params: { filename: string }): ejs.Options {
     const defaultOptions = {
-      root: path.resolve(__dirname, '../../templates'),
+      root: path.resolve(__dirname, '../templates'),
     }
     return {
       ...defaultOptions,
@@ -39,9 +39,9 @@ export default class Generator {
     const data = this.parseSpec()
 
     // Setup templates
-    const typesTemplate = path.resolve(__dirname, '../../templates/types.ejs')
-    const requestsTemplate = path.resolve(__dirname, '../../templates/requests.ejs')
-    const indexTemplate = path.resolve(__dirname, '../../templates/index.ejs')
+    const typesTemplate = path.resolve(__dirname, '../templates/types.ejs')
+    const requestsTemplate = path.resolve(__dirname, '../templates/requests.ejs')
+    const indexTemplate = path.resolve(__dirname, '../templates/index.ejs')
 
     // Setup dist
     if (!fs.existsSync(this.dist)) {
@@ -49,7 +49,7 @@ export default class Generator {
     }
 
     // Generate TS definitions.
-    new TSGen(this.spec, { namespace: this.options.namespace, dist: path.resolve(this.dist, this.tsGenDir) }).generate()
+    new TSGen(this.spec, { dist: path.resolve(this.dist, this.tsGenDir) }).generate()
 
     // console.log(JSON.stringify(data, null, '\t'))
 
@@ -87,8 +87,7 @@ export default class Generator {
 
     return {
       definitions,
-      namespace: this.options.namespace,
-      tags: parse(this.spec)
+      operations: parse(this.spec)
     }
   }
 
@@ -118,6 +117,5 @@ export default class Generator {
  * Options for TSCodeGenerator
  */
 export interface CodeGenOptions {
-  namespace: string
   dist: string
 }

@@ -2,27 +2,23 @@
 /* tslint:disable */
 /* eslint-disable */
 import { APIRequest, HTTPMethod } from './types'
-import { <%= namespace %> } from './gen-ts'
-
-<%_ Object.entries(tags).forEach(([tag, operations]) => { _%>
+import * as operations from './gen-ts'
 
 <%_ operations.forEach(operation => { _%>
-export class <%= operation.name %> implements APIRequest<<%= namespace %>.<%= tag %>.<%= operation.name%>Response> {
-  response: <%= namespace %>.<%= tag %>.<%= operation.name%>Response;
+export class <%= operation.name %> implements APIRequest<operations.<%= operation.name%>Response> {
+  response: operations.<%= operation.name%>Response;
   method = HTTPMethod["<%= operation.method %>"];
   path: string;
-  params<%= helper.isVoid(operation.queryParameter) && helper.isVoid(operation.requestBody) ? "?" : "" %>: <%= namespace %>.<%= tag %>.<%= operation.name%>Request
+  params<%= helper.isVoid(operation.queryParameter) && helper.isVoid(operation.requestBody) ? "?" : "" %>: operations.<%= operation.name%>Request
 
   constructor(args: {
-    params<%= helper.isVoid(operation.queryParameter) && helper.isVoid(operation.requestBody) ? "?" : "" %>: <%= namespace %>.<%= tag %>.<%= operation.name%>Request;
-    pathParameter<%= helper.isVoid(operation.pathParameter) ? "?" : "" %>: <%= namespace %>.<%= tag %>.<%= operation.name%>PathParameter;
+    params<%= helper.isVoid(operation.queryParameter) && helper.isVoid(operation.requestBody) ? "?" : "" %>: operations.<%= operation.name%>Request;
+    pathParameter<%= helper.isVoid(operation.pathParameter) ? "?" : "" %>: operations.<%= operation.name%>PathParameter;
   }) {
     const { params, pathParameter } = args
     this.params = params
     this.path = `<%= helper.toTemplateLiteral(operation.path) %>`
   }
 }
-
-<%_ }); _%>
 
 <%_ }); _%>

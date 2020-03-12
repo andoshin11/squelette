@@ -2,17 +2,17 @@
 /* tslint:disable */
 /* eslint-disable */
 import { APIRequest, HTTPMethod } from "./types";
-import { PetStore } from "./gen-ts";
+import * as operations from "./gen-ts";
 
-export class listPets implements APIRequest<PetStore.pets.listPetsResponse> {
-  response: PetStore.pets.listPetsResponse;
+export class listPets implements APIRequest<operations.listPetsResponse> {
+  response: operations.listPetsResponse;
   method = HTTPMethod["get"];
   path: string;
-  params: PetStore.pets.listPetsRequest;
+  params: operations.listPetsRequest;
 
   constructor(args: {
-    params: PetStore.pets.listPetsRequest;
-    pathParameter?: PetStore.pets.listPetsPathParameter;
+    params: operations.listPetsRequest;
+    pathParameter?: operations.listPetsPathParameter;
   }) {
     const { params, pathParameter } = args;
     this.params = params;
@@ -20,16 +20,15 @@ export class listPets implements APIRequest<PetStore.pets.listPetsResponse> {
   }
 }
 
-export class createPets
-  implements APIRequest<PetStore.pets.createPetsResponse> {
-  response: PetStore.pets.createPetsResponse;
+export class createPets implements APIRequest<operations.createPetsResponse> {
+  response: operations.createPetsResponse;
   method = HTTPMethod["post"];
   path: string;
-  params?: PetStore.pets.createPetsRequest;
+  params?: operations.createPetsRequest;
 
   constructor(args: {
-    params?: PetStore.pets.createPetsRequest;
-    pathParameter?: PetStore.pets.createPetsPathParameter;
+    params?: operations.createPetsRequest;
+    pathParameter?: operations.createPetsPathParameter;
   }) {
     const { params, pathParameter } = args;
     this.params = params;
@@ -37,16 +36,15 @@ export class createPets
   }
 }
 
-export class showPetById
-  implements APIRequest<PetStore.pets.showPetByIdResponse> {
-  response: PetStore.pets.showPetByIdResponse;
+export class showPetById implements APIRequest<operations.showPetByIdResponse> {
+  response: operations.showPetByIdResponse;
   method = HTTPMethod["get"];
   path: string;
-  params?: PetStore.pets.showPetByIdRequest;
+  params?: operations.showPetByIdRequest;
 
   constructor(args: {
-    params?: PetStore.pets.showPetByIdRequest;
-    pathParameter: PetStore.pets.showPetByIdPathParameter;
+    params?: operations.showPetByIdRequest;
+    pathParameter: operations.showPetByIdPathParameter;
   }) {
     const { params, pathParameter } = args;
     this.params = params;

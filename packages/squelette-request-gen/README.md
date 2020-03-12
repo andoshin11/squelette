@@ -15,7 +15,7 @@ $ yarn add @squelette/request-gen
 
 # How to use
 ```sh
-$ request-gen generate swagger.yml --namespace PetStore --dist requests
+$ request-gen generate spec.yml --dist requests
 ```
 
 # CLI Options
@@ -33,7 +33,6 @@ Commands:
   generate [options] <file>
 
   Options:
-  -n, --namespace <namespace>  Root namepace
   -d, --dist <dist>            Output directory
   -h, --help                   output usage information
 ```
@@ -75,18 +74,18 @@ components:
 This schema will be converted to...
 
 ```js
-import { PetStore } from "./gen-ts";
+import * as operations from "./gen-ts";
 
 export class showPetById
-  implements APIRequest<PetStore.pets.showPetByIdResponse> {
-  response: PetStore.pets.showPetByIdResponse;
+  implements APIRequest<operations.showPetByIdResponse> {
+  response: operations.showPetByIdResponse;
   method = HTTPMethod["get"];
   path: string;
-  params?: PetStore.pets.showPetByIdRequest;
+  params?: operations.showPetByIdRequest;
 
   constructor(args: {
-    params?: PetStore.pets.showPetByIdRequest;
-    pathParameter: PetStore.pets.showPetByIdPathParameter;
+    params?: operations.showPetByIdRequest;
+    pathParameter: operations.showPetByIdPathParameter;
   }) {
     const { params, pathParameter } = args;
     this.params = params;
