@@ -41,7 +41,7 @@ export default class Generator {
     const indexTemplate = path.resolve(__dirname, '../templates/index.ejs')
     const definitionTemplate = path.resolve(__dirname, '../templates/definition.ejs')
     const rootTemplate = path.resolve(__dirname, '../templates/root.ejs')
-    const namespaceTemplate = path.resolve(__dirname, '../templates/namespace.ejs')
+    const operationsTemplate = path.resolve(__dirname, '../templates/operations.ejs')
 
     // Setup dist
     if (!fs.existsSync(this.dist)) {
@@ -68,8 +68,8 @@ export default class Generator {
         content: ejs.render(this.readFileSync(indexTemplate), { names: definitionNames }, this.createEjsOptions({ filename: indexTemplate })) as string
       },
       {
-        filepath: path.resolve(this.dist, 'namespace.ts'),
-        content: ejs.render(this.readFileSync(namespaceTemplate), { ...data, definitionDir: this.definitionDir, helper }, this.createEjsOptions({ filename: namespaceTemplate })) as string
+        filepath: path.resolve(this.dist, 'operations.ts'),
+        content: ejs.render(this.readFileSync(operationsTemplate), { ...data, definitionDir: this.definitionDir, helper }, this.createEjsOptions({ filename: operationsTemplate })) as string
       },
       {
         filepath: path.resolve(this.dist, 'index.ts'),
@@ -95,7 +95,6 @@ export default class Generator {
 
     return {
       definitions,
-      namespace: this.options.namespace,
       operations: parse(this.spec)
     }
   }
@@ -126,6 +125,5 @@ export default class Generator {
  * Options for TSCodeGenerator
  */
 export interface CodeGenOptions {
-  namespace: string
   dist: string
 }

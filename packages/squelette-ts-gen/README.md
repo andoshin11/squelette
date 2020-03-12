@@ -19,7 +19,7 @@ $ yarn add @squelette/ts-gen
 
 # How to use
 ```sh
-$ ts-gen generate swagger.yml --namespace PetStore --dist types
+$ ts-gen generate swagger.yml --dist types
 ```
 
 # CLI Options
@@ -37,7 +37,6 @@ Commands:
   generate [options] <file>
 
   Options:
-  -n, --namespace <namespace>  Root namepace
   -d, --dist <dist>            Output directory
   -h, --help                   output usage information
 ```
