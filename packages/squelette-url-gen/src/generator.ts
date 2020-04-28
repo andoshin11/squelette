@@ -51,7 +51,7 @@ export default class Generator {
     this.genFiles([
       {
         filepath: path.resolve(this.dist, 'paths.ts'),
-        content: ejs.render(this.readFileSync(pathsTemplate), { helper, tags: data.operations }, this.createEjsOptions({ filename: pathsTemplate })) as string
+        content: ejs.render(this.readFileSync(pathsTemplate), { helper, operations: data.operations }, this.createEjsOptions({ filename: pathsTemplate })) as string
       },
       {
         filepath: path.resolve(this.dist, 'index.ts'),
