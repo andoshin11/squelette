@@ -43,7 +43,7 @@ export function mapTS(schema: SchemaObject, required: boolean = false) {
     if (schema.properties) {
       tsSchema.properties = Object.keys(schema.properties).reduce(
         (res: { [key: string]: TSSchema }, key) => {
-          const property = schema.properties![key]
+          const property = schema.properties![key] as SchemaObject
           res[key] = mapTS(property, isRequired(schema, key))
           return res
         },

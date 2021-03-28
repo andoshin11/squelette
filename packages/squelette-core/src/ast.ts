@@ -6,7 +6,7 @@ const printer = ts.createPrinter()
 export function printList(nodeList: ts.Node[]) {
   return printer.printList(
     ts.ListFormat.MultiLine,
-    ts.createNodeArray(nodeList),
+    ts.factory.createNodeArray(nodeList),
     ts.createSourceFile('', '', ts.ScriptTarget.ES2015)
   )
 }
@@ -18,56 +18,55 @@ export function SchemaToAST(schema: TSSchema) {
   let node: ts.TypeNode
   if (hasProperties) {
     const keys = Object.keys(schema.properties)
-    node = ts.createTypeLiteralNode(keys.map(key => {
+    node = ts.factory.createTypeLiteralNode(keys.map(key => {
       const property = schema.properties[key]
-      return ts.createPropertySignature(
+      return ts.factory.createPropertySignature(
         undefined,
-        ts.createStringLiteral(key),
+        ts.factory.createStringLiteral(key),
         property.isRequired ? undefined : ts.createToken(ts.SyntaxKind.QuestionToken),
-        SchemaToAST(property),
-        undefined
+        SchemaToAST(property)
       )
     }))
   } else if (isEnum) {
-    node = ts.createUnionTypeNode(schema.enum.map(i => {
-      return ts.createLiteralTypeNode(convertToLiteral(i))
+    node = ts.factory.createUnionTypeNode(schema.enum.map(i => {
+      return ts.factory.createLiteralTypeNode(convertToLiteral(i))
     }))
   } else if (schema.isRef) {
-    node = ts.createTypeReferenceNode(
-      ts.createIdentifier(schema.type),
+    node = ts.factory.createTypeReferenceNode(
+      ts.factory.createIdentifier(schema.type),
       undefined
     )
   } else if (schema.type === 'number') {
-    node = ts.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)
+    node = ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)
   } else if (schema.type === 'string') {
-    node = ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+    node = ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
   } else if (schema.type === 'boolean') {
-    node = ts.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword)
+    node = ts.factory.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword)
   } else if (schema.type === 'Date') {
-    node = ts.createTypeReferenceNode(ts.createIdentifier('Date'), undefined)
+    node = ts.factory.createTypeReferenceNode(ts.factory.createIdentifier('Date'), undefined)
   } else if (schema.type === 'any') {
-    node = ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+    node = ts.factory.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
   } else if (schema.type === 'void') {
-    node = ts.createNull()
+    node = ts.factory.createLiteralTypeNode(ts.factory.createNull())
   } else {
     throw new Error(`unsupported type: ${JSON.stringify(schema, null, '\t')}`)
   }
 
   if (schema.isArray) {
-    node = ts.createArrayTypeNode(node)
+    node = ts.factory.createArrayTypeNode(node)
   }
 
   if (schema.isNullable) {
     if (ts.isUnionTypeNode(node)) {
       const children = node.types
-      node = ts.createUnionTypeNode([
+      node = ts.factory.createUnionTypeNode([
         ...children,
-        ts.createNull()
+        ts.factory.createLiteralTypeNode(ts.factory.createNull())
       ])
     } else {
-      node = ts.createUnionTypeNode([
+      node = ts.factory.createUnionTypeNode([
         node,
-        ts.createNull()
+        ts.factory.createLiteralTypeNode(ts.factory.createNull())
       ])
     }
   }
@@ -79,9 +78,9 @@ export function SchemaToAST(schema: TSSchema) {
 function convertToLiteral(val: string | number | any): ts.StringLiteral | ts.NumericLiteral {
   switch (typeof val) {
     case 'string':
-      return ts.createStringLiteral(val)
+      return ts.factory.createStringLiteral(val)
     case 'number':
-      return ts.createNumericLiteral(val + '')
+      return ts.factory.createNumericLiteral(val + '')
     default:
       throw new Error('Unsupported enum type.')
   }
