@@ -39,6 +39,10 @@ export function mapType(type?: SwaggerSchemaType, format?: SwaggerSchemaFormat):
     return 'number'
   }
 
+  if (type === 'string' && (format === 'date' || format === 'date-time')) {
+    return 'Date'
+  }
+
   return typeMap[type] || 'any'
 }
 

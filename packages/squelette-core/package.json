@@ -26,7 +26,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "prepare": "tsc",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "test:type": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",
