@@ -43,6 +43,8 @@ export function SchemaToAST(schema: TSSchema) {
     node = ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
   } else if (schema.type === 'boolean') {
     node = ts.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword)
+  } else if (schema.type === 'Date') {
+    node = ts.createTypeReferenceNode(ts.createIdentifier('Date'), undefined)
   } else if (schema.type === 'any') {
     node = ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
   } else if (schema.type === 'void') {
