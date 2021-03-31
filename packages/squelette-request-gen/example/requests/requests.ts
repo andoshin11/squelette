@@ -12,6 +12,7 @@ export class listPets implements APIRequest<operations.listPetsResponse> {
 
   constructor(args: { params: operations.listPetsRequest }) {
     this.params = args.params;
+    this.path = `/pets`;
   }
 }
 
@@ -20,7 +21,9 @@ export class createPets implements APIRequest<operations.createPetsResponse> {
   method = "POST" as const;
   path: string;
 
-  constructor() {}
+  constructor() {
+    this.path = `/pets`;
+  }
 }
 
 export class showPetById implements APIRequest<operations.showPetByIdResponse> {

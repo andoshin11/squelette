@@ -20,9 +20,7 @@ export class <%= operation.name %> implements APIRequest<operations.<%= operatio
 <%_ if (!helper.isVoid(operation.queryParameter) || !helper.isVoid(operation.requestBody)) { _%>
     this.params = args.params
 <%_ }; _%>
-<%_ if (!helper.isVoid(operation.pathParameter)) { _%>
   this.path = `<%= helper.toTemplateLiteral(operation.path) %>`
-<%_ }; _%>
   }
 }
 
