@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.8](https://github.com/andoshin11/squelette/compare/v1.1.7...v1.1.8) (2021-11-03)
+
+**Note:** Version bump only for package @squelette/url-gen
+
+
+
+
+
 ## [1.1.3](https://github.com/andoshin11/squelette/compare/v1.1.2...v1.1.3) (2021-03-28)
 
 **Note:** Version bump only for package @squelette/url-gen
