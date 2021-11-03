@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@squelette/core@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@squelette/core/-/core-1.1.3.tgz#20b7a8ff34165a712b6692852f9629552de84377"
-  integrity sha512-wew62XhMxK7AJvPgwNeU/fcK5ax8aiIl2bmkczrHN6a8OzTVJbJuxiE+rQlx+MLGExcBIHIiVQUQETXTWu6lKQ==
-
 "@types/ejs@^2.6.3":
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/@types/ejs/-/ejs-2.6.3.tgz#b6509e9925d7eb5e95c8c73b6492e5baae7c1e6a"

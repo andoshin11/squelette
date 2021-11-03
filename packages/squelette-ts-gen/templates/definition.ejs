@@ -15,11 +15,11 @@ import <%= schema.type %> from "./<%= schema.type _%>";
 type <%= name _%> = <%= schema.type _%>[];
 export default <%= name _%>;
 <%_   } else if (!helper.isEmpty(schema.properties)) { _%>
-export interface <%= name _%>List {
+export type <%= name _%> = {
 <%_     Object.entries(schema.properties).forEach(([_name, _schema]) => { _%>
 <%- include('./property', { name: _name, schema: _schema, helper }) _%>
 <%_ }) _%>
-}
+}[]
 <%_   };
     } else if (schema.enum.length) {
       // An enum member cannot have a numeric name
