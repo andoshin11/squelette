@@ -41,5 +41,8 @@
     "ts-jest": "^25.2.1",
     "typescript": "4.2.2"
   },
-  "gitHead": "88aa290ca9b02a640102d8c7c7b588d55fac2a6c"
+  "gitHead": "88aa290ca9b02a640102d8c7c7b588d55fac2a6c",
+  "dependencies": {
+    "tmpl": "^1.0.5"
+  }
 }
