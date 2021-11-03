@@ -15,7 +15,7 @@ import <%= schema.type %> from "./<%= schema.type _%>";
 type <%= name _%> = <%= schema.type _%>[];
 export default <%= name _%>;
 <%_   } else if (!helper.isEmpty(schema.properties)) { _%>
-export type <%= name _%> = {
+export default type <%= name _%> = {
 <%_     Object.entries(schema.properties).forEach(([_name, _schema]) => { _%>
 <%- include('./property', { name: _name, schema: _schema, helper }) _%>
 <%_ }) _%>
