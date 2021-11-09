@@ -25,6 +25,14 @@ export interface <%= operation.name %>Request {
 
   <%_ if (operation.response && operation.response.isRef) { _%>
 export type <%= operation.name %>Response = <%= operation.response.type %>
+  <%_ } else if (operation.response && operation.response.isArray) { _%>
+export type <%= operation.name %>Response = {
+  <%_ if (operation.response && !helper.isEmpty(operation.response.properties)) { _%>
+    <%_ Object.entries(operation.response.properties).forEach(([ _name, _schema ]) => { _%>
+      <%- include('./property', { name: _name, schema: _schema, helper }) _%>
+    <%_ });
+  }; _%>
+}[]
   <%_ } else { _%>
 export interface <%= operation.name %>Response {
   <%_ if (operation.response && !helper.isEmpty(operation.response.properties)) { _%>
