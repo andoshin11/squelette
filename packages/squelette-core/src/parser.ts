@@ -52,7 +52,7 @@ export function parseResponse(responses: ResponsesObject): TSSchema {
   if (responses) {
     const response: ResponseObject = responses['200'] || responses['201']
     // console.log(JSON.stringify(responses['200'].content, null, '\t'))
-    if (response.content) {
+    if (response && response.content) {
       return mapTS(response.content['application/json'].schema as SchemaObject, true)
     }
   }
