@@ -128,45 +128,45 @@ describe('parseRequestBody', () => {
   })
 })
 
-// describe('parseErrors', () => {
-//   it('should parse correctly', () => {
-//     const cases: { input: ResponsesObject, expect: IErrorsSchema | undefined }[] = [
-//       {
-//         input: getOperationObject('/pets', 'get').responses,
-//         expect: undefined
-//       },
-//       {
-//         input: getOperationObject('/pets', 'post').responses,
-//         expect: {
-//           422: {
-//             type: 'any',
-//             isRequired: true,
-//             isRef: false,
-//             isArray: false,
-//             isNullable: false,
-//             enum: [],
-//             additionalProperties: null,
-//             properties: {
-//               reason: {
-//                 type: 'string',
-//                 isRequired: true,
-//                 isRef: false,
-//                 isArray: false,
-//                 isNullable: false,
-//                 enum: [],
-//                 properties: {},
-//                 additionalProperties: null
-//               }
-//             }
-//           }
-//         }
-//       }
-//     ]
+describe('parseErrors', () => {
+  it('should parse correctly', () => {
+    const cases: { input: ResponsesObject, expect: IErrorsSchema | undefined }[] = [
+      {
+        input: getOperationObject('/pets', 'get').responses,
+        expect: undefined
+      },
+      {
+        input: getOperationObject('/pets', 'post').responses,
+        expect: {
+          422: {
+            type: 'any',
+            isRequired: true,
+            isRef: false,
+            isArray: false,
+            isNullable: false,
+            enum: [],
+            additionalProperties: null,
+            properties: {
+              reason: {
+                type: 'string',
+                isRequired: true,
+                isRef: false,
+                isArray: false,
+                isNullable: false,
+                enum: [],
+                properties: {},
+                additionalProperties: null
+              }
+            }
+          }
+        }
+      }
+    ]
   
   
-//     cases.forEach(c => {
-//       // console.log(JSON.stringify(parseResponse(c.input), null, '\t'))
-//       expect(parseErrors(c.input)).toEqual(c.expect)
-//     })
-//   })
-// })
+    cases.forEach(c => {
+      // console.log(JSON.stringify(parseResponse(c.input), null, '\t'))
+      expect(parseErrors(c.input)).toEqual(c.expect)
+    })
+  })
+})
