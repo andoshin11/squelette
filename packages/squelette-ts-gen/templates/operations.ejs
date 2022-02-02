@@ -40,6 +40,8 @@ export type <%= operation.name %>Response = {
     <%- include('./additionalProperty', { schema: operation.response.additionalProperties, helper }) _%>
   <%_ }; _%>
 }[]
+  <%_ } else if (operation.response && (helper.isEmpty(operation.response.properties) && !operation.response.additionalProperties )) { _%>
+export type <%= operation.name %>Response = <% if ((operation.response.type === 'string' || operation.response.type === 'number') && operation.response.enum.length) { const enumStr = operation.response.enum.map(val => operation.response.type === 'string' ? `"${val}"` : val).join(' | ') _%><%- enumStr _%><%_ } else { _%><%= operation.response.type %><%= helper.arraySymbol(operation.response) _%><%_ } _%><%= operation.response.isNullable ? ' | null' : '' _%>;
   <%_ } else { _%>
 export interface <%= operation.name %>Response {
   <%_ if (operation.response && !helper.isEmpty(operation.response.properties)) { _%>
