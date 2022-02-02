@@ -15,6 +15,9 @@ export interface <%= operation.name %>Request {
       <%- include('./property', { name: _name, schema: _schema, helper }) _%>
     <%_ });
   }; _%>
+  <%_ if (operation.requestBody && !!operation.requestBody.additionalProperties) { _%>
+    <%- include('./additionalProperty', { schema: operation.requestBody.additionalProperties, helper }) _%>
+  <%_ }; _%>
   <%_ if (operation.queryParameter && !helper.isEmpty(operation.queryParameter.properties)) { _%>
     <%_ Object.entries(operation.queryParameter.properties).forEach(([ _name, _schema ]) => { _%>
       <%- include('./property', { name: _name, schema: _schema, helper }) _%>
@@ -32,6 +35,10 @@ export type <%= operation.name %>Response = {
       <%- include('./property', { name: _name, schema: _schema, helper }) _%>
     <%_ });
   }; _%>
+
+  <%_ if (operation.response && !!operation.response.additionalProperties) { _%>
+    <%- include('./additionalProperty', { schema: operation.response.additionalProperties, helper }) _%>
+  <%_ }; _%>
 }[]
   <%_ } else { _%>
 export interface <%= operation.name %>Response {
@@ -40,6 +47,10 @@ export interface <%= operation.name %>Response {
       <%- include('./property', { name: _name, schema: _schema, helper }) _%>
     <%_ });
   }; _%>
+
+  <%_ if (operation.response && !!operation.response.additionalProperties) { _%>
+    <%- include('./additionalProperty', { schema: operation.response.additionalProperties, helper }) _%>
+  <%_ }; _%>
 }
   <% }; %>
 

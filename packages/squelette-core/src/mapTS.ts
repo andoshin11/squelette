@@ -1,5 +1,5 @@
 import { SchemaObject } from 'openapi3-ts'
-import { TSSchema, SwaggerSchemaFormat, SwaggerSchemaType } from './types'
+import { TSSchema, SwaggerSchemaFormat, SwaggerSchemaType, Schema } from './types'
 import { mapType, isSchema, getRefName, isRequired } from './utils'
 
 export function mapTS(schema: SchemaObject, required: boolean = false) {
@@ -13,7 +13,8 @@ export function mapTS(schema: SchemaObject, required: boolean = false) {
     isRef: false,
     isNullable: schema.nullable || false,
     enum: [],
-    properties: {}
+    properties: {},
+    additionalProperties: null
   }
 
   // Has array type
@@ -49,6 +50,13 @@ export function mapTS(schema: SchemaObject, required: boolean = false) {
         },
         {}
       )
+    }
+    if (!!schema.additionalProperties) {
+      if (typeof schema.additionalProperties === 'boolean') {
+        tsSchema.additionalProperties = schema.additionalProperties
+      } else if (!!schema.additionalProperties) {
+        tsSchema.additionalProperties = mapTS(schema.additionalProperties)
+      }
     }
     return tsSchema
   }

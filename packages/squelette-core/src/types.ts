@@ -8,6 +8,7 @@ export interface TSSchema {
   isNullable: boolean
   enum: any[]
   properties: { [name: string]: TSSchema }
+  additionalProperties: TSSchema | true | null
 }
 
 export type SwaggerSchemaFormat =
@@ -96,7 +97,7 @@ export interface Schema extends BaseSchema {
   not?: Schema[]
   items?: Schema | Schema[]
   properties?: { [propertyName: string]: Schema }
-  additionalProperties?: Schema
+  additionalProperties?: unknown // FIXME
   description?: string
   format?:
     | 'int32'
