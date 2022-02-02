@@ -1,10 +1,10 @@
-import { ResponsesObject } from 'openapi3-ts'
-import { parseResponse, parseErrors } from './parser'
+import { ResponsesObject, RequestBodyObject } from 'openapi3-ts'
+import { parseResponse, parseErrors, parseRequestBody } from './parser'
 import { TSSchema, IErrorsSchema } from './types'
 import { getOperationObject } from './testing/helper'
 
 describe('parseResponse', () => {
-  it('should parse correctly', () => {
+  it('should parse response correctly', () => {
     const cases: { input: ResponsesObject, expect: TSSchema }[] = [
       {
         input: getOperationObject('/pets', 'get').responses,
@@ -15,6 +15,7 @@ describe('parseResponse', () => {
           isRef: false,
           isNullable: false,
           enum: [],
+          additionalProperties: null,
           properties: {
             pets: {
               type: 'Pet',
@@ -23,7 +24,8 @@ describe('parseResponse', () => {
               isRef: true,
               isNullable: false,
               enum: [],
-              properties: {}
+              properties: {},
+              additionalProperties: null,
             }
           }
         }
@@ -37,6 +39,7 @@ describe('parseResponse', () => {
           isRef: false,
           isNullable: false,
           enum: [],
+          additionalProperties: null,
           properties: {
             pet: {
               type: 'Pet',
@@ -45,7 +48,8 @@ describe('parseResponse', () => {
               isRef: true,
               isNullable: false,
               enum: [],
-              properties: {}
+              properties: {},
+              additionalProperties: null,
             }
           }
         }
@@ -59,43 +63,110 @@ describe('parseResponse', () => {
   })
 })
 
-describe('parseErrors', () => {
-  it('should parse correctly', () => {
-    const cases: { input: ResponsesObject, expect: IErrorsSchema | undefined }[] = [
+describe('parseRequestBody', () => {
+  it('should parse request correctly', () => {
+    const cases: { input: RequestBodyObject, expect: TSSchema }[] = [
       {
-        input: getOperationObject('/pets', 'get').responses,
-        expect: undefined
-      },
-      {
-        input: getOperationObject('/pets', 'post').responses,
+        input: getOperationObject('/pets', 'post').requestBody as RequestBodyObject,
         expect: {
-          422: {
-            type: 'any',
-            isRequired: true,
-            isRef: false,
+          type: 'any',
+          isRequired: false,
+          isArray: false,
+          isRef: false,
+          isNullable: false,
+          enum: [],
+          additionalProperties: {
+            type: 'number',
+            isRequired: false,
             isArray: false,
-            isNullable: false,
+            isRef: false,
+            isNullable: true,
             enum: [],
-            properties: {
-              reason: {
-                type: 'string',
-                isRequired: true,
-                isRef: false,
-                isArray: false,
-                isNullable: false,
-                enum: [],
-                properties: {}
-              }
+            properties: {},
+            additionalProperties: null
+          },
+          properties: {
+            name: {
+              type: 'string',
+              isRequired: true,
+              isArray: false,
+              isRef: false,
+              isNullable: false,
+              enum: [],
+              properties: {},
+              additionalProperties: null
+            },
+            category: {
+              type: 'number',
+              isRequired: false,
+              isArray: false,
+              isRef: false,
+              isNullable: false,
+              enum: [1, 2, 3],
+              properties: {},
+              additionalProperties: null,
+            },
+            sex: {
+              type: 'string',
+              isRequired: true,
+              isArray: false,
+              isRef: false,
+              isNullable: false,
+              enum: ['male', 'female'],
+              properties: {},
+              additionalProperties: null
             }
           }
         }
-      }
+      },
     ]
-  
-  
+
     cases.forEach(c => {
       // console.log(JSON.stringify(parseResponse(c.input), null, '\t'))
-      expect(parseErrors(c.input)).toEqual(c.expect)
+      expect(parseRequestBody(c.input)).toEqual(c.expect)
     })
   })
 })
+
+// describe('parseErrors', () => {
+//   it('should parse correctly', () => {
+//     const cases: { input: ResponsesObject, expect: IErrorsSchema | undefined }[] = [
+//       {
+//         input: getOperationObject('/pets', 'get').responses,
+//         expect: undefined
+//       },
+//       {
+//         input: getOperationObject('/pets', 'post').responses,
+//         expect: {
+//           422: {
+//             type: 'any',
+//             isRequired: true,
+//             isRef: false,
+//             isArray: false,
+//             isNullable: false,
+//             enum: [],
+//             additionalProperties: null,
+//             properties: {
+//               reason: {
+//                 type: 'string',
+//                 isRequired: true,
+//                 isRef: false,
+//                 isArray: false,
+//                 isNullable: false,
+//                 enum: [],
+//                 properties: {},
+//                 additionalProperties: null
+//               }
+//             }
+//           }
+//         }
+//       }
+//     ]
+  
+  
+//     cases.forEach(c => {
+//       // console.log(JSON.stringify(parseResponse(c.input), null, '\t'))
+//       expect(parseErrors(c.input)).toEqual(c.expect)
+//     })
+//   })
+// })

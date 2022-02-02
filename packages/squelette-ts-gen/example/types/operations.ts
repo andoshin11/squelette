@@ -13,7 +13,11 @@ export type listPetsResponse = Pets;
 
 export interface listPetsPathParameter {}
 
-export interface createPetsRequest {}
+export interface createPetsRequest {
+  name: string;
+  category?: 1 | 2 | 3;
+  sex: "male" | "female";
+}
 
 export interface createPetsResponse {
   pet: Pet;

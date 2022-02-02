@@ -14,11 +14,15 @@ import <%= schema.type %> from "./<%= schema.type _%>";
       if (schema.isRef) { _%>
 type <%= name _%> = <%= schema.type _%>[];
 export default <%= name _%>;
-<%_   } else if (!helper.isEmpty(schema.properties)) { _%>
+<%_   } else if (!helper.isEmpty(schema.properties) || !!schema.additionalProperties) { _%>
 type <%= name _%> = {
-<%_     Object.entries(schema.properties).forEach(([_name, _schema]) => { _%>
+<%_     Object.entries(schema.properties || {}).forEach(([_name, _schema]) => { _%>
 <%- include('./property', { name: _name, schema: _schema, helper }) _%>
 <%_ }) _%>
+
+<%_ if (schema.additionalProperties) { _%>
+  <%- include('./additionalProperty', { schema: schema.additionalProperties, helper }) _%>
+<%_ }; _%>
 }[]
 
 export default <%= name _%>
@@ -49,5 +53,9 @@ export default interface <%= name %> {
   <%- include('./property', { name: _name, schema: _schema, helper }) _%>
 <%_ })
    } _%>
+
+  <%_ if (schema.additionalProperties) { _%>
+    <%- include('./additionalProperty', { schema: schema.additionalProperties, helper }) _%>
+  <%_ }; _%>
 }
 <%_ } _%>

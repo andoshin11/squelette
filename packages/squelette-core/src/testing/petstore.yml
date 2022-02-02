@@ -74,6 +74,10 @@ paths:
                   enum:
                     - male
                     - female
+              additionalProperties:
+                type: number
+                format: int32
+                nullable: true
       responses:
         '200':
           description: Successful operation

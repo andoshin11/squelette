@@ -95,6 +95,7 @@ export function emptySchema(): TSSchema {
     isArray: false,
     isNullable: false,
     properties: {},
+    additionalProperties: null,
     enum: []
   }
 }

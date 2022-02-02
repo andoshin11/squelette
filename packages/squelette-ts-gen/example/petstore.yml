@@ -44,6 +44,29 @@ paths:
       operationId: createPets
       tags:
         - pets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - sex
+              properties:
+                name:
+                  type: string
+                category:
+                  type: integer
+                  format: int32
+                  enum:
+                    - 1
+                    - 2
+                    - 3
+                sex:
+                  type: string
+                  enum:
+                    - male
+                    - female
       responses:
         '200':
           description: Successful operation

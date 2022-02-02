@@ -1,0 +1,13 @@
+<%_ if (schema === true) { _%>
+  [key: string]: any
+<% } else if (!!schema) { %>
+  <%_ if (!helper.isEmpty(schema.properties)) { _%>
+    [key: string]: {
+      <%_ Object.entries(schema.properties).forEach(([_name, _schema]) => { _%>
+        <%- include('./property', { name: _name, schema: _schema, helper }) _%>
+      <%_ }) _%>
+    }<%= helper.arraySymbol(schema) _%><%= schema.isNullable ? ' | null' : '' _%>;
+  <%_ } else { _%>
+    [key: string]: <% if ((schema.type === 'string' || schema.type === 'number') && schema.enum.length) { const enumStr = schema.enum.map(val => schema.type === 'string' ? `"${val}"` : val).join(' | ') _%><%- enumStr _%><%_ } else { _%><%= schema.type %><%= helper.arraySymbol(schema) _%><%_ } _%><%= schema.isNullable ? ' | null' : '' _%>;
+  <%_ }; _%>
+<%_ }; _%>
