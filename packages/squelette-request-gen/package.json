@@ -34,7 +34,7 @@
     "@squelette/core": "^1.1.13",
     "@squelette/ts-gen": "^1.1.14",
     "commander": "^4.0.0",
-    "ejs": "^2.7.1",
+    "ejs": "^3.1.7",
     "js-yaml": "^3.13.1",
     "prettier": "^2.2.1"
   },
